@@ -1,0 +1,210 @@
+﻿@if (ViewBag.Success != null)
+{
+    <div class="container mt-3">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @ViewBag.Success
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    </div>
+}
+
+@if (ViewBag.Error != null)
+{
+    <div class="container mt-3">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            @ViewBag.Error
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    </div>
+}
+
+<main class="main">
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+            <h2>Contact</h2>
+            <p>
+                I'm always open to discussing new opportunities, freelance projects,
+                internships, and collaborations. Feel free to get in touch with me.
+            </p>
+        </div>
+
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+            <div class="row g-4 g-lg-5">
+
+                <!-- Contact Information -->
+                <div class="col-lg-5">
+
+                    <div class="info-box" data-aos="fade-up" data-aos-delay="200">
+
+                        <h3>Contact Info</h3>
+
+                        <p>
+                            Whether you have a project idea, a job opportunity,
+                            or simply want to connect, I'd be happy to hear from you.
+                        </p>
+
+                        <!-- Location -->
+                        <div class="info-item" data-aos="fade-up" data-aos-delay="300">
+                            <div class="icon-box">
+                                <i class="bi bi-geo-alt"></i>
+                            </div>
+
+                            <div class="content">
+                                <h4>Location</h4>
+                                <p>Dilshad Garden</p>
+                                <p>Delhi, India</p>
+                            </div>
+                        </div>
+
+                        <!-- Phone -->
+                        <div class="info-item" data-aos="fade-up" data-aos-delay="400">
+                            <div class="icon-box">
+                                <i class="bi bi-telephone"></i>
+                            </div>
+
+                            <div class="content">
+                                <h4>Phone</h4>
+                                <p>
+                                    <a href="tel:+919311065015">
+                                        +91 9311065015
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="info-item" data-aos="fade-up" data-aos-delay="500">
+                            <div class="icon-box">
+                                <i class="bi bi-envelope"></i>
+                            </div>
+
+                            <div class="content">
+                                <h4>Email</h4>
+                                <p>
+                                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=harshitdelhisix@gmail.com"
+                                       target="_blank">
+                                        harshitdelhisix@gmail.com
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- LinkedIn -->
+                        <div class="info-item" data-aos="fade-up" data-aos-delay="600">
+                            <div class="icon-box">
+                                <i class="bi bi-linkedin"></i>
+                            </div>
+
+                            <div class="content">
+                                <h4>LinkedIn</h4>
+                                <p>
+                                    <a href="https://www.linkedin.com/in/harshit-kumar-b3a5512b4"
+                                       target="_blank"
+                                       rel="noopener noreferrer">
+                                        linkedin.com/in/harshit-kumar-b3a5512b4
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- GitHub -->
+                        <div class="info-item" data-aos="fade-up" data-aos-delay="700">
+                            <div class="icon-box">
+                                <i class="bi bi-github"></i>
+                            </div>
+
+                            <div class="content">
+                                <h4>GitHub</h4>
+                                <p>
+                                    <a href="https://github.com/Harshitk0"
+                                       target="_blank"
+                                       rel="noopener noreferrer">
+                                        github.com/Harshitk0
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Contact Form -->
+                <div class="col-lg-7">
+
+                    <div class="contact-form" data-aos="fade-up" data-aos-delay="300">
+
+                        <h3>Get In Touch</h3>
+
+                        <p>
+                            Have a question or an opportunity?
+                            Send me a message and I'll get back to you as soon as possible.
+                        </p>
+
+                        <form asp-controller="Home"
+                              asp-action="Contact"
+                              method="post">
+
+                            <div class="row gy-4">
+
+                                <div class="col-md-6">
+                                    <input type="text"
+                                           name="Name"
+                                           class="form-control"
+                                           placeholder="Your Name"
+                                           required>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <input type="email"
+                                           name="Email"
+                                           class="form-control"
+                                           placeholder="Your Email"
+                                           required>
+                                </div>
+
+                                <div class="col-12">
+                                    <input type="text"
+                                           name="Subject"
+                                           class="form-control"
+                                           placeholder="Subject"
+                                           required>
+                                </div>
+
+                                <div class="col-12">
+                                    <textarea name="Message"
+                                              class="form-control"
+                                              rows="6"
+                                              placeholder="Write your message..."
+                                              required></textarea>
+                                </div>
+
+                                <div class="col-12 text-center">
+
+                                    <button type="submit" class="btn btn-primary px-5 py-2">
+                                        <i class="bi bi-send-fill me-2"></i>
+                                        Send Message
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
