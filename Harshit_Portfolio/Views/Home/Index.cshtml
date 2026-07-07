@@ -2,8 +2,78 @@
     ViewData["Title"] = "Home Page";
 }
 
+<style>
+    /* Desktop */
+    
 
+    /* .hero-image {
+        width: 100%;
+        max-width: 450px;
+        border-radius: 30px;
+        display: block;
+    } */
 
+    /* Tablet */
+    @@media (max-width: 991px) {
+        .hero-image {
+            max-width: 350px;
+        }
+    }
+
+    /* Mobile */
+    @@media (max-width: 987px) {
+
+        .image-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .hero-image {
+            max-width: 200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .floating-elements {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .floating-card {
+            position: static !important;
+            transform: none !important;
+        }
+
+        /* Hero Content Center */
+        .hero-content {
+            text-align: center;
+        }
+        /* Buttons Center */
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        /* Social Icons Center */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+    }
+</style>
     
     <main class="main">
 
