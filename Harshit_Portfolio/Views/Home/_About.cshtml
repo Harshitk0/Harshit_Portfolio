@@ -3,6 +3,10 @@
 *@
 @{
 }
+<style>
+    #about {
+        padding-top: 0px !important;
+    }</style>
 <main class="main">
 
     <!-- About Section -->
@@ -22,9 +26,9 @@
         <div class="container" data-aos="fade-up" data-aos-delay="100">
 
             <!-- Intro + Photo -->
-            <div class="row align-items-center justify-content-between gy-5 mb-5">
-
-                <div class="col-lg-7" data-aos="fade-right" data-aos-delay="150">
+            <!-- Intro -->
+            <div class="row">
+                <div class="col-12" data-aos="fade-up" data-aos-delay="150">
                     <div class="intro-content">
 
                         <span class="eyebrow">Hello There</span>
@@ -47,39 +51,19 @@
                         </p>
 
                         <div class="cta-group">
-                            <a asp-controller="Home" asp-action="Portfolio" class="btn-ghost">
+                            <a href="#portfolio" class="btn-ghost">
                                 View My Work <i class="bi bi-arrow-up-right"></i>
                             </a>
 
-                            
-                            <a href="/assets/File/Harshit.pdf" download="Harshit_Resume.pdf" class="link-underline">
+                            <a href="/assets/File/Harshit.pdf"
+                               download="Harshit_Resume.pdf"
+                               class="link-underline">
                                 Download Resume <i class="bi bi-download"></i>
                             </a>
                         </div>
 
                     </div>
                 </div>
-              
-                <!-- Desktop Image -->
-                <div class="col-lg-5 d-none d-md-block" data-aos="zoom-in" data-aos-delay="250">
-                    <figure class="profile-figure text-center text-lg-end">
-                        <img src="~/assets/img/profile/Image4.png"
-                             alt="Harshit Kumar"
-                             class="img-fluid  rounded-5  shadow"
-                             style="max-width:450px; width:100%;">
-                    </figure>
-                </div>
-
-                <!-- Mobile Image -->
-                @* <div class="col-12 d-block d-md-none text-center" data-aos="zoom-in" data-aos-delay="250">
-                    <figure class="profile-figure">
-                        <img src="~/assets/img/profile/Image3.png"
-                             alt="Harshit Kumar"
-                             class="img-fluid border border-2 rounded-4 p-2 shadow"
-                             style="max-width:220px; width:100%;">
-                    </figure>
-                </div> *@
-
             </div>
             <!-- End Intro + Photo -->
             <!-- Skills Grid -->

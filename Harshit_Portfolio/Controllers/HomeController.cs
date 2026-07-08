@@ -12,10 +12,7 @@ namespace Harshit_Portfolio.Controllers
         {
             return View();
         }
-        public IActionResult About()
-        {
-            return View();
-        }
+       
         private readonly IConfiguration _configuration;
 
         public HomeController(IConfiguration configuration)
@@ -23,17 +20,16 @@ namespace Harshit_Portfolio.Controllers
             _configuration = configuration;
         }
 
-        public IActionResult Contact()
-        {
-            return View();
-        }
+
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Contact(ContactModel model)
         {
             if (!ModelState.IsValid)
             {
-                return View(model);
+                TempData["Error"] = "Please fill all required fields.";
+                return RedirectToAction("Index");
             }
 
             try
@@ -50,13 +46,15 @@ namespace Harshit_Portfolio.Controllers
                 // Sender
                 mail.From = new MailAddress(fromEmail, fromName);
 
-                // Receiver (Your Email)
-                mail.To.Add("Harshitdelhisix@gmail.com");
+                // Receiver
+                mail.To.Add("harshitdelhisix@gmail.com");
+
+                // Reply To (User Email)
+                mail.ReplyToList.Add(new MailAddress(model.Email, model.Name));
 
                 // Subject
                 mail.Subject = $"📩 New Contact Form: {model.Subject}";
 
-                // HTML Email
                 mail.IsBodyHtml = true;
 
                 mail.Body = $@"
@@ -79,107 +77,41 @@ border-radius:12px;
 overflow:hidden;
 box-shadow:0 10px 30px rgba(0,0,0,.15);'>
 
-<!-- Header -->
 <tr>
-<td style='background:linear-gradient(135deg,#0d6efd,#6610f2);
-padding:35px;
-text-align:center;
-color:#ffffff;'>
+<td style='background:#0d6efd;padding:35px;text-align:center;color:#fff;'>
 
-<h1 style='margin:0;font-size:30px;font-weight:bold;'>
-📩 New Portfolio Inquiry
-</h1>
+<h1 style='margin:0;'>📩 New Portfolio Inquiry</h1>
 
-<p style='margin-top:10px;font-size:16px;'>
-You have received a new message from your website.
-</p>
+<p>You have received a new message from your website.</p>
 
 </td>
 </tr>
 
-<!-- Body -->
 <tr>
 <td style='padding:35px;'>
 
-<table width='100%' cellpadding='12' cellspacing='0'
-style='border-collapse:collapse;
-font-size:15px;'>
+<table width='100%' cellpadding='12' cellspacing='0' style='border-collapse:collapse;'>
 
 <tr>
-<td style='width:170px;
-background:#f8f9fa;
-font-weight:bold;
-color:#0d6efd;
-border:1px solid #dee2e6;'>
-
-👤 Name
-
-</td>
-
-<td style='border:1px solid #dee2e6;'>
-
-{model.Name}
-
-</td>
+<td style='font-weight:bold;background:#f8f9fa;'>Name</td>
+<td>{model.Name}</td>
 </tr>
 
 <tr>
-<td style='background:#f8f9fa;
-font-weight:bold;
-color:#0d6efd;
-border:1px solid #dee2e6;'>
-
-📧 Email
-
-</td>
-
-<td style='border:1px solid #dee2e6;'>
-
-<a href='mailto:{model.Email}'
-style='color:#0d6efd;text-decoration:none;'>
-
-{model.Email}
-
-</a>
-
-</td>
+<td style='font-weight:bold;background:#f8f9fa;'>Email</td>
+<td>{model.Email}</td>
 </tr>
 
 <tr>
-<td style='background:#f8f9fa;
-font-weight:bold;
-color:#0d6efd;
-border:1px solid #dee2e6;'>
-
-📝 Subject
-
-</td>
-
-<td style='border:1px solid #dee2e6;'>
-
-{model.Subject}
-
-</td>
+<td style='font-weight:bold;background:#f8f9fa;'>Subject</td>
+<td>{model.Subject}</td>
 </tr>
 
 </table>
 
-<h2 style='margin-top:35px;
-color:#0d6efd;
-border-bottom:2px solid #0d6efd;
-padding-bottom:8px;'>
+<h3 style='margin-top:30px;'>Message</h3>
 
-💬 Message
-
-</h2>
-
-<div style='background:#f8f9fa;
-border-left:5px solid #0d6efd;
-padding:20px;
-border-radius:8px;
-font-size:15px;
-line-height:1.8;
-color:#444;'>
+<div style='background:#f8f9fa;padding:20px;border-left:4px solid #0d6efd;'>
 
 {model.Message.Replace(Environment.NewLine, "<br/>")}
 
@@ -188,23 +120,10 @@ color:#444;'>
 </td>
 </tr>
 
-<!-- Footer -->
 <tr>
-<td style='background:#212529;
-padding:25px;
-text-align:center;
-color:#ffffff;'>
+<td style='background:#212529;color:#fff;text-align:center;padding:20px;'>
 
-<p style='margin:0;font-size:15px;'>
-This email was automatically generated from your
-<strong>Portfolio Contact Form</strong>.
-</p>
-
-<p style='margin-top:10px;font-size:13px;color:#adb5bd;'>
-
-© {DateTime.Now.Year} Harshit Portfolio. All Rights Reserved.
-
-</p>
+© @DateTime.Now.Year Harshit Portfolio
 
 </td>
 </tr>
@@ -218,7 +137,6 @@ This email was automatically generated from your
 </body>
 </html>";
 
-                // SMTP Configuration
                 SmtpClient smtp = new SmtpClient(host, port)
                 {
                     Credentials = new NetworkCredential(username, password),
@@ -227,43 +145,20 @@ This email was automatically generated from your
                     UseDefaultCredentials = false
                 };
 
-                // Send Email
                 smtp.Send(mail);
 
-                ViewBag.Success = "Your message has been sent successfully.";
+                TempData["Success"] = "✅ Your message has been sent successfully.";
 
-                ModelState.Clear();
-
-                return View();
+                return RedirectToAction("Index");
             }
             catch (Exception ex)
             {
-                ViewBag.Error = ex.Message;
-                return View(model);
+                TempData["Error"] = ex.Message;
+
+                return RedirectToAction("Index");
             }
         }
-        public IActionResult Services()
-        {
-            return View();
-        }
-        public IActionResult ServiceDetails(int id)
-        {
-            ViewBag.Id = id;
-            return View();
-        }
-        public IActionResult Portfolio()
-        {
-            return View();
-        }
-       
-        public IActionResult PortfolioDetails()
-        {
-            return View();
-        }
-        public IActionResult Resume()
-        {
-            return View();
-        }
+
         public IActionResult Privacy()
         {
             return View();

@@ -4,14 +4,16 @@
 
 <style>
     /* Desktop */
+    #hero {
+        padding-bottom: 0 !important;
+        padding-top: 0 !important;
     
-
     /* .hero-image {
-        width: 100%;
-        max-width: 450px;
-        border-radius: 30px;
-        display: block;
-    } */
+            width: 100%;
+            max-width: 450px;
+            border-radius: 30px;
+            display: block;
+        } */
 
     /* Tablet */
     @@media (max-width: 991px) {
@@ -50,7 +52,6 @@
             position: static !important;
             transform: none !important;
         }
-
         /* Hero Content Center */
         .hero-content {
             text-align: center;
@@ -74,16 +75,16 @@
         }
     }
 </style>
-    
-    <main class="main">
 
-        <!-- Hero Section -->
-        <section id="hero" class="hero section">
+<main class="main">
 
-            <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <!-- Hero Section -->
+    <section id="hero" class="hero section">
 
-                <div class="row gy-4 align-items-center">
-                    <div class="col-lg-6 order-2 order-lg-1">
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+            <div class="row gy-4 align-items-center">
+                <div class="col-lg-6 order-2 order-lg-1">
                     <div class="hero-content">
                         <h1 data-aos="fade-up" data-aos-delay="200">
                             Hello, I'm <span class="highlight">Harshit</span>
@@ -98,14 +99,19 @@
                         </p>
 
                         <div class="hero-actions" data-aos="fade-up" data-aos-delay="500">
-                            <a asp-controller="Home" asp-action="Portfolio" class="btn btn-primary">View My Projects</a>
-                            <a asp-controller="Home" asp-action="Contact" class="btn btn-outline">Hire Me</a>
+                            <a href="#portfolio" class="btn btn-primary">
+                                View My Projects
+                            </a>
+
+                            <a href="#contact" class="btn btn-outline">
+                                Hire Me
+                            </a>
                         </div>
 
                         <div class="social-links" data-aos="fade-up" data-aos-delay="600">
 
                             <!-- GitHub -->
-                            <a href="https://github.com/Harshit-02" target="_blank" rel="noopener noreferrer" title="GitHub">
+                            <a href="https://github.com/Harshitk0" target="_blank" rel="noopener noreferrer" title="GitHub">
                                 <i class="bi bi-github"></i>
                             </a>
 
@@ -114,42 +120,49 @@
                                 <i class="bi bi-linkedin"></i>
                             </a>
 
-                            <!-- Email -->
-                            <a href="mailto:harshitdelhisix@gmail.com" target="_blank" rel="noopener noreferrer"  title="Email">
+                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=harshitdelhisix@gmail.com&su=Portfolio%20Inquiry"
+                               target="_blank">
                                 <i class="bi bi-envelope-fill"></i>
                             </a>
 
                         </div>
                     </div>
-                    </div>
-                    <div class="col-lg-6 order-1 order-lg-2">
-                        <div class="hero-image" data-aos="zoom-in" data-aos-delay="300">
-                            <div class="image-wrapper">
-                                <img src="~/assets/img/profile/Image4.png" alt="Sarah Mitchell" class="img-fluid">
-                                <div class="floating-elements">
-                                    <div class="floating-card design" data-aos="fade-left" data-aos-delay="700">
-                                        <i class="bi bi-palette"></i>
-                                        <span>Design</span>
-                                    </div>
-                                    <div class="floating-card code" data-aos="fade-right" data-aos-delay="800">
-                                        <i class="bi bi-code-slash"></i>
-                                        <span>Code</span>
-                                    </div>
-                                    <div class="floating-card creativity" data-aos="fade-up" data-aos-delay="900">
-                                        <i class="bi bi-lightbulb"></i>
-                                        <span>Ideas</span>
-                                    </div>
+                </div>
+                <div class="col-lg-6 order-1 order-lg-2">
+                    <div class="hero-image" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="image-wrapper">
+                            <img src="~/assets/img/profile/Image4.png" alt="Sarah Mitchell" class="img-fluid">
+                            <div class="floating-elements">
+                                <div class="floating-card design" data-aos="fade-left" data-aos-delay="700">
+                                    <i class="bi bi-palette"></i>
+                                    <span>Design</span>
+                                </div>
+                                <div class="floating-card code" data-aos="fade-right" data-aos-delay="800">
+                                    <i class="bi bi-code-slash"></i>
+                                    <span>Code</span>
+                                </div>
+                                <div class="floating-card creativity" data-aos="fade-up" data-aos-delay="900">
+                                    <i class="bi bi-lightbulb"></i>
+                                    <span>Ideas</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
 
-        </section><!-- /Hero Section -->
+        </div>
 
-    </main>
+    </section><!-- /Hero Section -->
+    <partial name="_About" />
+  
+ 
+    <partial name="_Resume" />
+    <partial name="_Services" />
+    <partial name="_Portfolio" />
+    <partial name="_contact"/>
+</main>
+
     
    
 
